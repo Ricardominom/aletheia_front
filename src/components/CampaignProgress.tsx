@@ -3,21 +3,7 @@ import { useCampaigns } from '../hooks/useCampaign';
 import { formatPercentage } from '../utils/data';
 
 export default function CampaignProgress() {
-  const { loading } = useCampaigns();
-  const [campaigns, setCampaigns] = useState<any[]>([]);
-  
-  useEffect(() => {
-    fetch('/api/dashboard/campana')
-      .then(res => res.json())
-      .then(data => setCampaigns(
-        data.map((a: any) => ({
-          ...a,
-          name: a.campaign,
-          progress: a.progress,
-          trend: a.trend
-        }))
-      ));
-}, []);
+  const { campaigns, loading } = useCampaigns();
 
   if (loading) {
     return (
