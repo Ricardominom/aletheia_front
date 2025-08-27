@@ -1,5 +1,14 @@
 import React, { useState, useEffect } from 'react';
 import { Facebook, Users, Eye, Heart, MessageCircle, Video, Image, BarChart3 } from 'lucide-react';
+import { Doughnut } from 'react-chartjs-2';
+import {
+  Chart as ChartJS,
+  ArcElement,
+  Tooltip,
+  Legend
+} from 'chart.js';
+
+ChartJS.register(ArcElement, Tooltip, Legend);
 
 interface FacebookMetrics {
   postViews: string;
@@ -152,33 +161,62 @@ export default function FacebookMetricsCard() {
         </div>
 
         {/* Gender Distribution */}
-        <div className="bg-card/50 rounded-lg p-4 border border-blue-500/20">
+        <div className="bg-card/50 rounded-lg p-6 border border-blue-500/20">
           <h4 className="text-sm font-medium text-gray-400 mb-3 uppercase">Gender Distribution</h4>
-          <div className="space-y-3">
-            <div className="flex items-center justify-between">
-              <div className="flex items-center gap-2">
-                <div className="w-3 h-3 rounded-full bg-blue-600"></div>
-                <span className="text-sm text-gray-300">Male</span>
-              </div>
-              <span className="text-lg font-bold text-blue-500">{metrics.genderDistribution.male}%</span>
-            </div>
-            <div className="flex items-center justify-between">
-              <div className="flex items-center gap-2">
-                <div className="w-3 h-3 rounded-full bg-blue-400"></div>
-                <span className="text-sm text-gray-300">Female</span>
-              </div>
-              <span className="text-lg font-bold text-blue-400">{metrics.genderDistribution.female}%</span>
-            </div>
-            {/* Visual representation */}
-            <div className="h-3 bg-background/50 rounded-full overflow-hidden flex">
-              <div 
-                className="bg-blue-600 h-full transition-all duration-300"
-                style={{ width: `${metrics.genderDistribution.male}%` }}
+          <div className="flex items-center gap-6">
+            {/* Pie Chart */}
+            <div className="w-32 h-32 relative">
+              <Doughnut 
+                data={{
+                  labels: ['Male', 'Female'],
+                  datasets: [{
+                    data: [metrics.genderDistribution.male, metrics.genderDistribution.female],
+                    backgroundColor: ['#2563eb', '#60a5fa'],
+                    borderColor: ['#1d4ed8', '#3b82f6'],
+                    borderWidth: 2,
+                    cutout: '60%',
+                  }]
+                }}
+                options={{
+                  responsive: true,
+                  maintainAspectRatio: false,
+                  plugins: {
+                    legend: {
+                      display: false,
+                    },
+                    tooltip: {
+                      backgroundColor: 'rgba(10, 10, 10, 0.9)',
+                      titleColor: '#fff',
+                      bodyColor: '#fff',
+                      borderColor: 'rgba(37, 99, 235, 0.2)',
+                      borderWidth: 1,
+                      callbacks: {
+                        label: function(context: any) {
+                          return `${context.label}: ${context.parsed}%`;
+                        }
+                      }
+                    },
+                  },
+                }}
               />
-              <div 
-                className="bg-blue-400 h-full transition-all duration-300"
-                style={{ width: `${metrics.genderDistribution.female}%` }}
-              />
+            </div>
+            
+            {/* Legend */}
+            <div className="flex-1 space-y-3">
+              <div className="flex items-center justify-between">
+                <div className="flex items-center gap-3">
+                  <div className="w-4 h-4 rounded-full bg-blue-600"></div>
+                  <span className="text-sm text-gray-300 font-medium">Male</span>
+                </div>
+                <span className="text-xl font-bold text-blue-500">{metrics.genderDistribution.male}%</span>
+              </div>
+              <div className="flex items-center justify-between">
+                <div className="flex items-center gap-3">
+                  <div className="w-4 h-4 rounded-full bg-blue-400"></div>
+                  <span className="text-sm text-gray-300 font-medium">Female</span>
+                </div>
+                <span className="text-xl font-bold text-blue-400">{metrics.genderDistribution.female}%</span>
+              </div>
             </div>
           </div>
         </div>
