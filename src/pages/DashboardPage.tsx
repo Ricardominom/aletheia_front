@@ -14,6 +14,8 @@ import StrategicContentCard from "../components/StrategicContentCard";
 import EncuestasDashboard from "../components/EncuestasDashboard";
 import AvisosTable from "../components/cochabamba/AvisosTable";
 import AdversariosTable from "../components/adversarios/AdversariosTable";
+import FacebookMetricsCard from "../components/FacebookMetricsCard";
+import InstagramMetricsCard from "../components/InstagramMetricsCard";
 
 export default function DashboardPage() {
   const location = useLocation();
@@ -118,8 +120,12 @@ export default function DashboardPage() {
 
                 {/* Social Listening Section */}
                 <div className="grid grid-cols-12 gap-6">
-                  <div className="col-span-12">
+                  <div className="col-span-12 lg:col-span-8">
                     <SocialListening />
+                  </div>
+                  <div className="col-span-12 lg:col-span-4 space-y-6">
+                    <FacebookMetricsCard />
+                    <InstagramMetricsCard />
                   </div>
                 </div>
 
