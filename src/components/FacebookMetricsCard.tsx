@@ -92,7 +92,7 @@ export default function FacebookMetricsCard() {
   }, []);
 
   return (
-    <div className="glassmorphic-container p-6 animate-scale-in">
+    <div className="glassmorphic-container p-6 animate-scale-in h-[800px] overflow-y-auto">
       {/* Background effects */}
       <div className="absolute inset-0 bg-gradient-to-br from-blue-500/5 to-blue-700/5 rounded-xl -z-10"></div>
       <div className="absolute inset-0 backdrop-blur-md rounded-xl -z-10"></div>
@@ -118,13 +118,13 @@ export default function FacebookMetricsCard() {
 
       <div className="space-y-6 relative z-10">
         {/* Main Metrics Grid */}
-        <div className="grid grid-cols-2 gap-4">
+        <div className="grid grid-cols-2 gap-3">
           <div className="bg-card/50 rounded-lg p-4 border border-blue-500/20 group hover:border-blue-500/40 transition-all duration-300">
             <div className="flex items-center gap-2 mb-2">
               <Eye className="w-5 h-5 text-blue-400" />
               <span className="text-sm text-gray-400 uppercase">Post Views</span>
             </div>
-            <div className="text-3xl font-bold text-blue-500 text-neon animate-float">
+            <div className="text-2xl font-bold text-blue-500 text-neon animate-float">
               {metrics.postViews}
             </div>
           </div>
@@ -134,7 +134,7 @@ export default function FacebookMetricsCard() {
               <Users className="w-5 h-5 text-blue-400" />
               <span className="text-sm text-gray-400 uppercase">Profile Views</span>
             </div>
-            <div className="text-3xl font-bold text-blue-500 text-neon animate-float">
+            <div className="text-2xl font-bold text-blue-500 text-neon animate-float">
               {metrics.profileViews}
             </div>
           </div>
@@ -144,7 +144,7 @@ export default function FacebookMetricsCard() {
               <Heart className="w-5 h-5 text-blue-400" />
               <span className="text-sm text-gray-400 uppercase">Likes</span>
             </div>
-            <div className="text-3xl font-bold text-blue-400 text-neon">
+            <div className="text-2xl font-bold text-blue-400 text-neon">
               {metrics.likes}
             </div>
           </div>
@@ -154,18 +154,18 @@ export default function FacebookMetricsCard() {
               <MessageCircle className="w-5 h-5 text-blue-400" />
               <span className="text-sm text-gray-400 uppercase">Comments</span>
             </div>
-            <div className="text-3xl font-bold text-blue-400 text-neon">
+            <div className="text-2xl font-bold text-blue-400 text-neon">
               {metrics.comments}
             </div>
           </div>
         </div>
 
         {/* Gender Distribution */}
-        <div className="bg-card/50 rounded-lg p-6 border border-blue-500/20">
+        <div className="bg-card/50 rounded-lg p-4 border border-blue-500/20">
           <h4 className="text-sm font-medium text-gray-400 mb-3 uppercase">Gender Distribution</h4>
           <div className="flex items-center gap-6">
             {/* Pie Chart */}
-            <div className="w-32 h-32 relative">
+            <div className="w-24 h-24 relative">
               <Doughnut 
                 data={{
                   labels: ['Male', 'Female'],
@@ -208,14 +208,14 @@ export default function FacebookMetricsCard() {
                   <div className="w-4 h-4 rounded-full bg-blue-600"></div>
                   <span className="text-sm text-gray-300 font-medium">Male</span>
                 </div>
-                <span className="text-xl font-bold text-blue-500">{metrics.genderDistribution.male}%</span>
+                <span className="text-lg font-bold text-blue-500">{metrics.genderDistribution.male}%</span>
               </div>
               <div className="flex items-center justify-between">
                 <div className="flex items-center gap-3">
                   <div className="w-4 h-4 rounded-full bg-blue-400"></div>
                   <span className="text-sm text-gray-300 font-medium">Female</span>
                 </div>
-                <span className="text-xl font-bold text-blue-400">{metrics.genderDistribution.female}%</span>
+                <span className="text-lg font-bold text-blue-400">{metrics.genderDistribution.female}%</span>
               </div>
             </div>
           </div>
@@ -229,15 +229,15 @@ export default function FacebookMetricsCard() {
           <div className="flex items-center gap-4 mb-4 pb-3 border-b border-blue-500/10">
             <div className="flex items-center gap-2">
               <div className="w-3 h-3 rounded-full bg-green-500"></div>
-              <span className="text-sm font-medium text-green-500">10% Followers</span>
+              <span className="text-xs font-medium text-green-500">10% Followers</span>
             </div>
             <div className="flex items-center gap-2">
               <div className="w-3 h-3 rounded-full bg-blue-600"></div>
-              <span className="text-sm font-medium text-blue-600">90% Non-followers</span>
+              <span className="text-xs font-medium text-blue-600">90% Non-followers</span>
             </div>
           </div>
           
-          <div className="space-y-2">
+          <div className="space-y-1">
             {Object.entries(metrics.contentTypes).map(([type, percentage]) => {
               const getIcon = () => {
                 switch (type) {
@@ -263,16 +263,16 @@ export default function FacebookMetricsCard() {
                 <div key={type} className="flex items-center justify-between">
                   <div className="flex items-center gap-2">
                     {getIcon()}
-                    <span className="text-sm text-gray-300">{getLabel()}</span>
+                    <span className="text-xs text-gray-300">{getLabel()}</span>
                   </div>
                   <div className="flex items-center gap-3">
-                    <div className="w-20 h-2 bg-background/50 rounded-full overflow-hidden">
+                    <div className="w-16 h-1.5 bg-background/50 rounded-full overflow-hidden">
                       <div 
                         className="h-full bg-blue-500 transition-all duration-300"
                         style={{ width: `${(percentage / 70) * 100}%` }}
                       />
                     </div>
-                    <span className="text-sm font-medium text-blue-400 w-12 text-right">
+                    <span className="text-xs font-medium text-blue-400 w-10 text-right">
                       {percentage}%
                     </span>
                   </div>
@@ -283,7 +283,7 @@ export default function FacebookMetricsCard() {
         </div>
 
         {/* Age Groups */}
-        <div className="bg-card/50 rounded-lg p-4 border border-blue-500/20">
+        <div className="bg-card/50 rounded-lg p-3 border border-blue-500/20">
           <h4 className="text-sm font-medium text-gray-400 mb-3 uppercase">
             Age and Gender Distribution
           </h4>
@@ -292,18 +292,18 @@ export default function FacebookMetricsCard() {
             <span className="text-gray-400 mx-2">•</span>
             <span className="text-sm text-blue-600">{metrics.overallGender.men}% Men</span>
           </div>
-          <div className="space-y-2">
+          <div className="space-y-1">
             {Object.entries(metrics.ageGroups).map(([age, percentage]) => (
               <div key={age} className="flex items-center justify-between">
-                <span className="text-sm text-gray-300">{age}</span>
+                <span className="text-xs text-gray-300">{age}</span>
                 <div className="flex items-center gap-3">
-                  <div className="w-24 h-2 bg-background/50 rounded-full overflow-hidden">
+                  <div className="w-20 h-1.5 bg-background/50 rounded-full overflow-hidden">
                     <div 
                       className="h-full bg-blue-500 transition-all duration-300"
                       style={{ width: `${(percentage / 35) * 100}%` }}
                     />
                   </div>
-                  <span className="text-sm font-medium text-blue-400 w-12 text-right">
+                  <span className="text-xs font-medium text-blue-400 w-10 text-right">
                     {percentage}%
                   </span>
                 </div>
