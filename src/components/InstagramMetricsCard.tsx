@@ -241,19 +241,6 @@ export default function InstagramMetricsCard() {
           <div>
             <h5 className="text-lg font-semibold text-white mb-4">By content type</h5>
             
-            {/* Filter buttons */}
-            <div className="flex gap-2 mb-4">
-              <button className="px-4 py-2 bg-pink-500/20 border border-pink-500/30 rounded-full text-pink-400 text-sm font-medium">
-                All
-              </button>
-              <button className="px-4 py-2 bg-background/50 border border-gray-600/30 rounded-full text-gray-400 text-sm hover:border-pink-500/30 transition-colors">
-                Followers
-              </button>
-              <button className="px-4 py-2 bg-background/50 border border-gray-600/30 rounded-full text-gray-400 text-sm hover:border-pink-500/30 transition-colors">
-                Non-followers
-              </button>
-            </div>
-            
             <div className="space-y-3">
               {Object.entries(metrics.contentTypes).map(([type, percentage]) => {
                 const getLabel = () => {
