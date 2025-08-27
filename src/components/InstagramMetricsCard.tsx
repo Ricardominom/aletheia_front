@@ -2,8 +2,9 @@ import React, { useState, useEffect } from 'react';
 import { Instagram, Users, Eye, Heart, MessageCircle } from 'lucide-react';
 
 interface InstagramMetrics {
-  const [loading, setLoading] = useState(false);
-  engagement: number;
+  followers: number;
+  reach: number;
+  engagement_rate: number;
   likes: number;
   comments: number;
   stories: number;
@@ -11,12 +12,8 @@ interface InstagramMetrics {
 }
 
 export default function InstagramMetricsCard() {
+  const [loading, setLoading] = useState(false);
   const [metrics, setMetrics] = useState<InstagramMetrics>({
-    followers: 32800,
-  }
-  )
-  // Using mock data directly since no backend is available
-  const metrics = {
     followers: 45200,
     reach: 128500,
     engagement_rate: 4.8,
@@ -24,7 +21,7 @@ export default function InstagramMetricsCard() {
     comments: 1250,
     stories: 24,
     impressions: 156300
-  };
+  });
 
   return (
     <div className="glassmorphic-container p-6 h-[320px] animate-scale-in">
