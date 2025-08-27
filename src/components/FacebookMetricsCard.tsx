@@ -312,37 +312,6 @@ export default function FacebookMetricsCard() {
           </div>
         </div>
 
-        {/* Audience Type */}
-        <div className="bg-card/50 rounded-lg p-4 border border-blue-500/20">
-          <h4 className="text-sm font-medium text-gray-400 mb-3 uppercase">Audience Type</h4>
-          <div className="space-y-3">
-            <div className="flex items-center justify-between">
-              <div className="flex items-center gap-2">
-                <div className="w-3 h-3 rounded-full bg-green-500"></div>
-                <span className="text-sm text-gray-300">Followers</span>
-              </div>
-              <span className="text-lg font-bold text-green-500">{metrics.audienceType.followers}%</span>
-            </div>
-            <div className="flex items-center justify-between">
-              <div className="flex items-center gap-2">
-                <div className="w-3 h-3 rounded-full bg-blue-600"></div>
-                <span className="text-sm text-gray-300">Non-followers</span>
-              </div>
-              <span className="text-lg font-bold text-blue-600">{metrics.audienceType.nonFollowers}%</span>
-            </div>
-            {/* Visual representation */}
-            <div className="h-3 bg-background/50 rounded-full overflow-hidden flex">
-              <div 
-                className="bg-green-500 h-full transition-all duration-300"
-                style={{ width: `${metrics.audienceType.followers}%` }}
-              />
-              <div 
-                className="bg-blue-600 h-full transition-all duration-300"
-                style={{ width: `${metrics.audienceType.nonFollowers}%` }}
-              />
-            </div>
-          </div>
-        </div>
       </div>
     </div>
   );
