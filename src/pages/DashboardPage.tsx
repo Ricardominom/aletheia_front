@@ -120,11 +120,17 @@ export default function DashboardPage() {
 
                 {/* Social Listening Section */}
                 <div className="grid grid-cols-12 gap-6">
-                  <div className="col-span-12 lg:col-span-8">
+                  <div className="col-span-12">
                     <SocialListening />
                   </div>
-                  <div className="col-span-12 lg:col-span-4 space-y-6">
+                </div>
+
+                {/* Social Media Analytics Section */}
+                <div className="grid grid-cols-12 gap-6">
+                  <div className="col-span-12 lg:col-span-6">
                     <FacebookMetricsCard />
+                  </div>
+                  <div className="col-span-12 lg:col-span-6">
                     <InstagramMetricsCard />
                   </div>
                 </div>

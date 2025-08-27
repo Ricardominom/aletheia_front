@@ -1,25 +1,67 @@
 import React, { useState, useEffect } from 'react';
-import { Facebook, Users, Eye, Heart, MessageCircle } from 'lucide-react';
+import { Facebook, Users, Eye, Heart, MessageCircle, Video, Image, BarChart3 } from 'lucide-react';
 
 interface FacebookMetrics {
-  followers: number;
-  reach: number;
-  engagement: number;
-  likes: number;
-  comments: number;
-  shares: number;
-  impressions: number;
+  postViews: string;
+  profileViews: string;
+  likes: string;
+  comments: string;
+  genderDistribution: {
+    male: number;
+    female: number;
+  };
+  contentTypes: {
+    video: number;
+    multiPhoto: number;
+    photo: number;
+    story: number;
+  };
+  audienceType: {
+    followers: number;
+    nonFollowers: number;
+  };
+  ageGroups: {
+    '25-34': number;
+    '35-44': number;
+    'other': number;
+    '45-54': number;
+  };
+  overallGender: {
+    women: number;
+    men: number;
+  };
 }
 
 export default function FacebookMetricsCard() {
   const [metrics, setMetrics] = useState<FacebookMetrics>({
-    followers: 45200,
-    reach: 128500,
-    engagement: 8.4,
-    likes: 2340,
-    comments: 456,
-    shares: 189,
-    impressions: 156700,
+    postViews: '26M',
+    profileViews: '192K',
+    likes: '917K',
+    comments: '115K',
+    genderDistribution: {
+      male: 60,
+      female: 40,
+    },
+    contentTypes: {
+      video: 67.2,
+      multiPhoto: 13.5,
+      photo: 7.3,
+      story: 1.6,
+    },
+    audienceType: {
+      followers: 10,
+      nonFollowers: 90,
+    },
+    ageGroups: {
+      '25-34': 31.4,
+      '35-44': 29.2,
+      'other': 23.4,
+      '45-54': 16.0,
+    },
+    overallGender: {
+      women: 52,
+      men: 48,
+    },
   });
 
   useEffect(() => {
@@ -41,7 +83,7 @@ export default function FacebookMetricsCard() {
   }, []);
 
   return (
-    <div className="glassmorphic-container p-6 h-[320px] animate-scale-in">
+    <div className="glassmorphic-container p-6 animate-scale-in">
       {/* Background effects */}
       <div className="absolute inset-0 bg-gradient-to-br from-blue-500/5 to-blue-700/5 rounded-xl -z-10"></div>
       <div className="absolute inset-0 backdrop-blur-md rounded-xl -z-10"></div>
@@ -53,77 +95,202 @@ export default function FacebookMetricsCard() {
       {/* Header */}
       <div className="flex items-center justify-between mb-6 relative z-10">
         <div className="flex items-center gap-3">
-          <div className="bg-blue-500/10 p-3 rounded-lg">
+          <div className="bg-blue-500/10 p-3 rounded-lg border border-blue-500/20">
             <Facebook className="w-6 h-6 text-blue-500" />
           </div>
           <div>
             <h2 className="text-xl font-semibold text-white text-neon">
-              Facebook
+              Facebook Analytics
             </h2>
-            <p className="text-gray-400 text-sm">Métricas de la página oficial</p>
-          </div>
-        </div>
-        
-        <div className="text-right">
-          <div className="text-2xl font-bold text-blue-500 text-neon">
-            {(metrics.followers / 1000).toFixed(1)}K
-          </div>
-          <div className="text-xs text-gray-400">Seguidores</div>
-        </div>
-      </div>
-
-      {/* Metrics Grid */}
-      <div className="grid grid-cols-2 gap-4 mb-4 relative z-10">
-        <div className="bg-card/50 rounded-lg p-4 border border-blue-500/20 group hover:border-blue-500/40 transition-all duration-300">
-          <div className="flex items-center gap-2 mb-2">
-            <Eye className="w-4 h-4 text-blue-400" />
-            <span className="text-xs text-gray-400 uppercase">Alcance</span>
-          </div>
-          <div className="text-xl font-bold text-blue-400 text-neon">
-            {(metrics.reach / 1000).toFixed(1)}K
-          </div>
-        </div>
-
-        <div className="bg-card/50 rounded-lg p-4 border border-blue-500/20 group hover:border-blue-500/40 transition-all duration-300">
-          <div className="flex items-center gap-2 mb-2">
-            <Heart className="w-4 h-4 text-blue-400" />
-            <span className="text-xs text-gray-400 uppercase">Engagement</span>
-          </div>
-          <div className="text-xl font-bold text-blue-400 text-neon">
-            {metrics.engagement}%
-          </div>
-        </div>
-
-        <div className="bg-card/50 rounded-lg p-4 border border-blue-500/20 group hover:border-blue-500/40 transition-all duration-300">
-          <div className="flex items-center gap-2 mb-2">
-            <Heart className="w-4 h-4 text-blue-400" />
-            <span className="text-xs text-gray-400 uppercase">Me Gusta</span>
-          </div>
-          <div className="text-lg font-bold text-white">
-            {metrics.likes.toLocaleString()}
-          </div>
-        </div>
-
-        <div className="bg-card/50 rounded-lg p-4 border border-blue-500/20 group hover:border-blue-500/40 transition-all duration-300">
-          <div className="flex items-center gap-2 mb-2">
-            <MessageCircle className="w-4 h-4 text-blue-400" />
-            <span className="text-xs text-gray-400 uppercase">Comentarios</span>
-          </div>
-          <div className="text-lg font-bold text-white">
-            {metrics.comments.toLocaleString()}
+            <p className="text-gray-400 text-sm">Métricas detalladas de la página</p>
           </div>
         </div>
       </div>
 
-      {/* Bottom Stats */}
-      <div className="grid grid-cols-2 gap-4 relative z-10">
-        <div className="text-center">
-          <div className="text-lg font-bold text-blue-400">{metrics.shares}</div>
-          <div className="text-xs text-gray-400">Compartidos</div>
+      <div className="space-y-6 relative z-10">
+        {/* Main Metrics Grid */}
+        <div className="grid grid-cols-2 gap-4">
+          <div className="bg-card/50 rounded-lg p-4 border border-blue-500/20 group hover:border-blue-500/40 transition-all duration-300">
+            <div className="flex items-center gap-2 mb-2">
+              <Eye className="w-5 h-5 text-blue-400" />
+              <span className="text-sm text-gray-400 uppercase">Post Views</span>
+            </div>
+            <div className="text-3xl font-bold text-blue-500 text-neon animate-float">
+              {metrics.postViews}
+            </div>
+          </div>
+
+          <div className="bg-card/50 rounded-lg p-4 border border-blue-500/20 group hover:border-blue-500/40 transition-all duration-300">
+            <div className="flex items-center gap-2 mb-2">
+              <Users className="w-5 h-5 text-blue-400" />
+              <span className="text-sm text-gray-400 uppercase">Profile Views</span>
+            </div>
+            <div className="text-3xl font-bold text-blue-500 text-neon animate-float">
+              {metrics.profileViews}
+            </div>
+          </div>
+
+          <div className="bg-card/50 rounded-lg p-4 border border-blue-500/20 group hover:border-blue-500/40 transition-all duration-300">
+            <div className="flex items-center gap-2 mb-2">
+              <Heart className="w-5 h-5 text-blue-400" />
+              <span className="text-sm text-gray-400 uppercase">Likes</span>
+            </div>
+            <div className="text-3xl font-bold text-blue-400 text-neon">
+              {metrics.likes}
+            </div>
+          </div>
+
+          <div className="bg-card/50 rounded-lg p-4 border border-blue-500/20 group hover:border-blue-500/40 transition-all duration-300">
+            <div className="flex items-center gap-2 mb-2">
+              <MessageCircle className="w-5 h-5 text-blue-400" />
+              <span className="text-sm text-gray-400 uppercase">Comments</span>
+            </div>
+            <div className="text-3xl font-bold text-blue-400 text-neon">
+              {metrics.comments}
+            </div>
+          </div>
         </div>
-        <div className="text-center">
-          <div className="text-lg font-bold text-blue-400">{(metrics.impressions / 1000).toFixed(1)}K</div>
-          <div className="text-xs text-gray-400">Impresiones</div>
+
+        {/* Gender Distribution */}
+        <div className="bg-card/50 rounded-lg p-4 border border-blue-500/20">
+          <h4 className="text-sm font-medium text-gray-400 mb-3 uppercase">Gender Distribution</h4>
+          <div className="space-y-3">
+            <div className="flex items-center justify-between">
+              <div className="flex items-center gap-2">
+                <div className="w-3 h-3 rounded-full bg-blue-600"></div>
+                <span className="text-sm text-gray-300">Male</span>
+              </div>
+              <span className="text-lg font-bold text-blue-500">{metrics.genderDistribution.male}%</span>
+            </div>
+            <div className="flex items-center justify-between">
+              <div className="flex items-center gap-2">
+                <div className="w-3 h-3 rounded-full bg-blue-400"></div>
+                <span className="text-sm text-gray-300">Female</span>
+              </div>
+              <span className="text-lg font-bold text-blue-400">{metrics.genderDistribution.female}%</span>
+            </div>
+            {/* Visual representation */}
+            <div className="h-3 bg-background/50 rounded-full overflow-hidden flex">
+              <div 
+                className="bg-blue-600 h-full transition-all duration-300"
+                style={{ width: `${metrics.genderDistribution.male}%` }}
+              />
+              <div 
+                className="bg-blue-400 h-full transition-all duration-300"
+                style={{ width: `${metrics.genderDistribution.female}%` }}
+              />
+            </div>
+          </div>
+        </div>
+
+        {/* Content Types */}
+        <div className="bg-card/50 rounded-lg p-4 border border-blue-500/20">
+          <h4 className="text-sm font-medium text-gray-400 mb-3 uppercase">Content Performance</h4>
+          <div className="space-y-2">
+            {Object.entries(metrics.contentTypes).map(([type, percentage]) => {
+              const getIcon = () => {
+                switch (type) {
+                  case 'video': return <Video className="w-4 h-4 text-blue-500" />;
+                  case 'multiPhoto': return <Image className="w-4 h-4 text-blue-400" />;
+                  case 'photo': return <Image className="w-4 h-4 text-blue-300" />;
+                  case 'story': return <BarChart3 className="w-4 h-4 text-blue-200" />;
+                  default: return <BarChart3 className="w-4 h-4 text-blue-500" />;
+                }
+              };
+
+              const getLabel = () => {
+                switch (type) {
+                  case 'video': return 'Video';
+                  case 'multiPhoto': return 'Multi Photo';
+                  case 'photo': return 'Photo';
+                  case 'story': return 'Story';
+                  default: return type;
+                }
+              };
+
+              return (
+                <div key={type} className="flex items-center justify-between">
+                  <div className="flex items-center gap-2">
+                    {getIcon()}
+                    <span className="text-sm text-gray-300">{getLabel()}</span>
+                  </div>
+                  <div className="flex items-center gap-3">
+                    <div className="w-20 h-2 bg-background/50 rounded-full overflow-hidden">
+                      <div 
+                        className="h-full bg-blue-500 transition-all duration-300"
+                        style={{ width: `${(percentage / 70) * 100}%` }}
+                      />
+                    </div>
+                    <span className="text-sm font-medium text-blue-400 w-12 text-right">
+                      {percentage}%
+                    </span>
+                  </div>
+                </div>
+              );
+            })}
+          </div>
+        </div>
+
+        {/* Age Groups */}
+        <div className="bg-card/50 rounded-lg p-4 border border-blue-500/20">
+          <h4 className="text-sm font-medium text-gray-400 mb-3 uppercase">
+            Age and Gender Distribution
+          </h4>
+          <div className="mb-3 text-center">
+            <span className="text-sm text-blue-400">{metrics.overallGender.women}% Women</span>
+            <span className="text-gray-400 mx-2">•</span>
+            <span className="text-sm text-blue-600">{metrics.overallGender.men}% Men</span>
+          </div>
+          <div className="space-y-2">
+            {Object.entries(metrics.ageGroups).map(([age, percentage]) => (
+              <div key={age} className="flex items-center justify-between">
+                <span className="text-sm text-gray-300">{age}</span>
+                <div className="flex items-center gap-3">
+                  <div className="w-24 h-2 bg-background/50 rounded-full overflow-hidden">
+                    <div 
+                      className="h-full bg-blue-500 transition-all duration-300"
+                      style={{ width: `${(percentage / 35) * 100}%` }}
+                    />
+                  </div>
+                  <span className="text-sm font-medium text-blue-400 w-12 text-right">
+                    {percentage}%
+                  </span>
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+
+        {/* Audience Type */}
+        <div className="bg-card/50 rounded-lg p-4 border border-blue-500/20">
+          <h4 className="text-sm font-medium text-gray-400 mb-3 uppercase">Audience Type</h4>
+          <div className="space-y-3">
+            <div className="flex items-center justify-between">
+              <div className="flex items-center gap-2">
+                <div className="w-3 h-3 rounded-full bg-green-500"></div>
+                <span className="text-sm text-gray-300">Followers</span>
+              </div>
+              <span className="text-lg font-bold text-green-500">{metrics.audienceType.followers}%</span>
+            </div>
+            <div className="flex items-center justify-between">
+              <div className="flex items-center gap-2">
+                <div className="w-3 h-3 rounded-full bg-blue-600"></div>
+                <span className="text-sm text-gray-300">Non-followers</span>
+              </div>
+              <span className="text-lg font-bold text-blue-600">{metrics.audienceType.nonFollowers}%</span>
+            </div>
+            {/* Visual representation */}
+            <div className="h-3 bg-background/50 rounded-full overflow-hidden flex">
+              <div 
+                className="bg-green-500 h-full transition-all duration-300"
+                style={{ width: `${metrics.audienceType.followers}%` }}
+              />
+              <div 
+                className="bg-blue-600 h-full transition-all duration-300"
+                style={{ width: `${metrics.audienceType.nonFollowers}%` }}
+              />
+            </div>
+          </div>
         </div>
       </div>
     </div>
