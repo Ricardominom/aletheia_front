@@ -51,6 +51,7 @@ export default function InstagramMetricsCard() {
     views: '6.0M',
     viewsFromAds: '77.9%',
     interactions: '153,192',
+    interactions: '65.8K',
     interactionsFromAds: '4.4%',
     newFollowers: 1047,
     contentShared: 362,
