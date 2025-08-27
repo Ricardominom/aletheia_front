@@ -224,6 +224,19 @@ export default function FacebookMetricsCard() {
         {/* Content Types */}
         <div className="bg-card/50 rounded-lg p-4 border border-blue-500/20">
           <h4 className="text-sm font-medium text-gray-400 mb-3 uppercase">Content Performance</h4>
+          
+          {/* Followers/Non-followers header */}
+          <div className="flex items-center gap-4 mb-4 pb-3 border-b border-blue-500/10">
+            <div className="flex items-center gap-2">
+              <div className="w-3 h-3 rounded-full bg-green-500"></div>
+              <span className="text-sm font-medium text-green-500">10% Followers</span>
+            </div>
+            <div className="flex items-center gap-2">
+              <div className="w-3 h-3 rounded-full bg-blue-600"></div>
+              <span className="text-sm font-medium text-blue-600">90% Non-followers</span>
+            </div>
+          </div>
+          
           <div className="space-y-2">
             {Object.entries(metrics.contentTypes).map(([type, percentage]) => {
               const getIcon = () => {
