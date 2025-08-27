@@ -154,21 +154,21 @@ export default function InstagramMetricsCard() {
         </div>
 
         {/* Views Section - Combined card with accounts reached and content type */}
-        <div className="bg-card/50 rounded-lg p-6 border border-pink-500/20">
+        <div className="bg-card/50 rounded-lg p-4 border border-pink-500/20">
           <h4 className="text-lg font-semibold text-white mb-6 text-neon">Views</h4>
           
           {/* Main Views Display */}
-          <div className="text-center mb-6">
-            <div className="text-4xl font-bold text-pink-500 text-neon mb-2">
+          <div className="text-center mb-4">
+            <div className="text-3xl font-bold text-pink-500 text-neon mb-2">
               {metrics.views}
             </div>
-            <div className="text-lg text-gray-300 mb-1">Views</div>
+            <div className="text-base text-gray-300 mb-1">Views</div>
             <div className="text-sm text-gray-400">{metrics.viewsFromAds} from ads</div>
           </div>
 
           {/* Audience Type Pie Chart */}
-          <div className="flex items-center justify-center gap-6 mb-6">
-            <div className="w-32 h-32 relative">
+          <div className="flex items-center justify-center gap-4 mb-4">
+            <div className="w-24 h-24 relative">
               <Doughnut 
                 data={{
                   labels: ['Followers', 'Non-followers'],
@@ -205,43 +205,43 @@ export default function InstagramMetricsCard() {
             </div>
             
             {/* Legend */}
-            <div className="space-y-3">
-              <div className="flex items-center justify-between min-w-[140px]">
+            <div className="space-y-2">
+              <div className="flex items-center justify-between min-w-[120px]">
                 <div className="flex items-center gap-3">
                   <div className="w-4 h-4 rounded-full bg-pink-500"></div>
                   <span className="text-sm text-gray-300 font-medium">Followers</span>
                 </div>
-                <span className="text-lg font-bold text-pink-500">{metrics.audienceType.followers}%</span>
+                <span className="text-base font-bold text-pink-500">{metrics.audienceType.followers}%</span>
               </div>
               <div className="flex items-center justify-between">
                 <div className="flex items-center gap-3">
                   <div className="w-4 h-4 rounded-full bg-purple-500"></div>
                   <span className="text-sm text-gray-300 font-medium">Non-followers</span>
                 </div>
-                <span className="text-lg font-bold text-purple-500">{metrics.audienceType.nonFollowers}%</span>
+                <span className="text-base font-bold text-purple-500">{metrics.audienceType.nonFollowers}%</span>
               </div>
             </div>
           </div>
 
           {/* Accounts Reached */}
-          <div className="bg-background/30 rounded-lg p-4 border border-pink-500/20 mb-6">
+          <div className="bg-background/30 rounded-lg p-3 border border-pink-500/20 mb-4">
             <div className="flex items-center justify-between">
               <div>
                 <div className="text-sm text-gray-400 mb-1">Accounts reached</div>
-                <div className="text-2xl font-bold text-pink-500">{metrics.accountsReached}</div>
+                <div className="text-xl font-bold text-pink-500">{metrics.accountsReached}</div>
               </div>
               <div className="flex items-center gap-2 text-green-400">
                 <TrendingUp className="w-5 h-5" />
-                <span className="text-lg font-medium">{metrics.accountsReachedGrowth}</span>
+                <span className="text-base font-medium">{metrics.accountsReachedGrowth}</span>
               </div>
             </div>
           </div>
 
           {/* By Content Type */}
           <div>
-            <h5 className="text-lg font-semibold text-white mb-4">By content type</h5>
+            <h5 className="text-base font-semibold text-white mb-3">By content type</h5>
             
-            <div className="space-y-3">
+            <div className="space-y-2">
               {Object.entries(metrics.contentTypes).map(([type, percentage]) => {
                 const getLabel = () => {
                   switch (type) {
@@ -269,7 +269,7 @@ export default function InstagramMetricsCard() {
                   <div key={type} className="flex items-center justify-between">
                     <span className="text-sm text-gray-300 font-medium">{getLabel()}</span>
                     <div className="flex items-center gap-3">
-                      <div className="w-40 h-3 bg-background/50 rounded-full overflow-hidden">
+                      <div className="w-32 h-2 bg-background/50 rounded-full overflow-hidden">
                         <div 
                           className={`h-full ${getBarColor()} transition-all duration-300 relative`}
                           style={{ width: `${(percentage / 50) * 100}%` }}
@@ -278,7 +278,7 @@ export default function InstagramMetricsCard() {
                           <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/20 to-transparent animate-shimmer"></div>
                         </div>
                       </div>
-                      <span className="text-sm font-bold text-pink-400 w-12 text-right">
+                      <span className="text-xs font-bold text-pink-400 w-10 text-right">
                         {percentage}%
                       </span>
                     </div>
