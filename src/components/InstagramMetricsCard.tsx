@@ -84,7 +84,7 @@ export default function InstagramMetricsCard() {
   });
 
   return (
-    <div className="glassmorphic-container p-6 animate-scale-in">
+    <div className="glassmorphic-container p-6 animate-scale-in h-[900px] overflow-y-auto">
       {/* Background effects */}
       <div className="absolute inset-0 bg-gradient-to-br from-pink-500/5 to-purple-600/5 rounded-xl -z-10"></div>
       <div className="absolute inset-0 backdrop-blur-md rounded-xl -z-10"></div>
