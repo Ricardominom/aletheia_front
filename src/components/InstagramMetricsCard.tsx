@@ -290,21 +290,21 @@ export default function InstagramMetricsCard() {
         </div>
 
         {/* Interactions Section */}
-        <div className="bg-card/50 rounded-lg p-6 border border-pink-500/20">
-          <h4 className="text-lg font-semibold text-white mb-4 text-neon">Interactions</h4>
+        <div className="bg-card/50 rounded-lg p-4 border border-pink-500/20">
+          <h4 className="text-base font-semibold text-white mb-3 text-neon">Interactions</h4>
           
           {/* Main Interactions Display */}
-          <div className="text-center mb-6">
-            <div className="text-4xl font-bold text-pink-500 text-neon mb-2">
+          <div className="text-center mb-4">
+            <div className="text-3xl font-bold text-pink-500 text-neon mb-2">
               153,192
             </div>
-            <div className="text-lg text-gray-300 mb-1">Interactions</div>
+            <div className="text-base text-gray-300 mb-1">Interactions</div>
             <div className="text-sm text-gray-400">{metrics.interactionsFromAds} from ads</div>
           </div>
 
           {/* Interactions Audience Type Pie Chart */}
-          <div className="flex items-center justify-center gap-6">
-            <div className="w-32 h-32 relative">
+          <div className="flex items-center justify-center gap-4">
+            <div className="w-24 h-24 relative">
               <Doughnut 
                 data={{
                   labels: ['Followers', 'Non-followers'],
@@ -341,20 +341,20 @@ export default function InstagramMetricsCard() {
             </div>
             
             {/* Legend */}
-            <div className="space-y-3">
-              <div className="flex items-center justify-between min-w-[140px]">
+            <div className="space-y-2">
+              <div className="flex items-center justify-between min-w-[120px]">
                 <div className="flex items-center gap-3">
                   <div className="w-4 h-4 rounded-full bg-pink-500"></div>
                   <span className="text-sm text-gray-300 font-medium">Followers</span>
                 </div>
-                <span className="text-lg font-bold text-pink-500">60.9%</span>
+                <span className="text-base font-bold text-pink-500">60.9%</span>
               </div>
               <div className="flex items-center justify-between">
                 <div className="flex items-center gap-3">
                   <div className="w-4 h-4 rounded-full bg-purple-500"></div>
                   <span className="text-sm text-gray-300 font-medium">Non-followers</span>
                 </div>
-                <span className="text-lg font-bold text-purple-500">39.1%</span>
+                <span className="text-base font-bold text-purple-500">39.1%</span>
               </div>
             </div>
           </div>
