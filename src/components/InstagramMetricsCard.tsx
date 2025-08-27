@@ -48,9 +48,8 @@ interface InstagramMetrics {
 
 export default function InstagramMetricsCard() {
   const [metrics, setMetrics] = useState<InstagramMetrics>({
-    views: '6.0M',
+    views: '15,068,096',
     viewsFromAds: '77.9%',
-    interactions: '153,192',
     interactions: '65.8K',
     interactionsFromAds: '4.4%',
     newFollowers: 1047,
@@ -117,10 +116,9 @@ export default function InstagramMetricsCard() {
               <Eye className="w-5 h-5 text-pink-400" />
               <span className="text-sm text-gray-400 uppercase">Views</span>
             </div>
-            <div className="text-3xl font-bold text-pink-500 text-neon animate-float">
-              {metrics.views}
+            <div className="text-2xl font-bold text-pink-500 text-neon animate-float">
+              6.0M
             </div>
-            <div className="text-xs text-gray-400 mt-1">{metrics.viewsFromAds} from ads</div>
           </div>
 
           <div className="bg-card/50 rounded-lg p-4 border border-pink-500/20 group hover:border-pink-500/40 transition-all duration-300">
@@ -128,7 +126,7 @@ export default function InstagramMetricsCard() {
               <Heart className="w-5 h-5 text-pink-400" />
               <span className="text-sm text-gray-400 uppercase">Interactions</span>
             </div>
-            <div className="text-3xl font-bold text-pink-500 text-neon animate-float">
+            <div className="text-2xl font-bold text-pink-500 text-neon animate-float">
               {metrics.interactions}
             </div>
             <div className="text-xs text-gray-400 mt-1">{metrics.interactionsFromAds} from ads</div>
@@ -139,7 +137,7 @@ export default function InstagramMetricsCard() {
               <Users className="w-5 h-5 text-pink-400" />
               <span className="text-sm text-gray-400 uppercase">New followers</span>
             </div>
-            <div className="text-3xl font-bold text-pink-400 text-neon">
+            <div className="text-2xl font-bold text-pink-400 text-neon">
               {metrics.newFollowers.toLocaleString()}
             </div>
           </div>
@@ -149,27 +147,27 @@ export default function InstagramMetricsCard() {
               <MessageCircle className="w-5 h-5 text-pink-400" />
               <span className="text-sm text-gray-400 uppercase">Content shared</span>
             </div>
-            <div className="text-3xl font-bold text-pink-400 text-neon">
+            <div className="text-2xl font-bold text-pink-400 text-neon">
               {metrics.contentShared}
             </div>
           </div>
         </div>
 
-        {/* Accounts Reached */}
+        {/* Views Section - Combined card with accounts reached and content type */}
         <div className="bg-card/50 rounded-lg p-6 border border-pink-500/20">
-          <div className="text-center mb-4">
+          <h4 className="text-lg font-semibold text-white mb-6 text-neon">Views</h4>
+          
+          {/* Main Views Display */}
+          <div className="text-center mb-6">
             <div className="text-4xl font-bold text-pink-500 text-neon mb-2">
-              {metrics.accountsReached}
+              {metrics.views}
             </div>
-            <div className="text-lg text-gray-300 mb-1">Accounts reached</div>
-            <div className="flex items-center justify-center gap-2 text-green-400">
-              <TrendingUp className="w-4 h-4" />
-              <span className="text-sm font-medium">{metrics.accountsReachedGrowth}</span>
-            </div>
+            <div className="text-lg text-gray-300 mb-1">Views</div>
+            <div className="text-sm text-gray-400">{metrics.viewsFromAds} from ads</div>
           </div>
 
           {/* Audience Type Pie Chart */}
-          <div className="flex items-center justify-center gap-6">
+          <div className="flex items-center justify-center gap-6 mb-6">
             <div className="w-32 h-32 relative">
               <Doughnut 
                 data={{
@@ -208,7 +206,7 @@ export default function InstagramMetricsCard() {
             
             {/* Legend */}
             <div className="space-y-3">
-              <div className="flex items-center justify-between min-w-[120px]">
+              <div className="flex items-center justify-between min-w-[140px]">
                 <div className="flex items-center gap-3">
                   <div className="w-4 h-4 rounded-full bg-pink-500"></div>
                   <span className="text-sm text-gray-300 font-medium">Followers</span>
@@ -224,67 +222,154 @@ export default function InstagramMetricsCard() {
               </div>
             </div>
           </div>
+
+          {/* Accounts Reached */}
+          <div className="bg-background/30 rounded-lg p-4 border border-pink-500/20 mb-6">
+            <div className="flex items-center justify-between">
+              <div>
+                <div className="text-sm text-gray-400 mb-1">Accounts reached</div>
+                <div className="text-2xl font-bold text-pink-500">{metrics.accountsReached}</div>
+              </div>
+              <div className="flex items-center gap-2 text-green-400">
+                <TrendingUp className="w-5 h-5" />
+                <span className="text-lg font-medium">{metrics.accountsReachedGrowth}</span>
+              </div>
+            </div>
+          </div>
+
+          {/* By Content Type */}
+          <div>
+            <h5 className="text-lg font-semibold text-white mb-4">By content type</h5>
+            
+            {/* Filter buttons */}
+            <div className="flex gap-2 mb-4">
+              <button className="px-4 py-2 bg-pink-500/20 border border-pink-500/30 rounded-full text-pink-400 text-sm font-medium">
+                All
+              </button>
+              <button className="px-4 py-2 bg-background/50 border border-gray-600/30 rounded-full text-gray-400 text-sm hover:border-pink-500/30 transition-colors">
+                Followers
+              </button>
+              <button className="px-4 py-2 bg-background/50 border border-gray-600/30 rounded-full text-gray-400 text-sm hover:border-pink-500/30 transition-colors">
+                Non-followers
+              </button>
+            </div>
+            
+            <div className="space-y-3">
+              {Object.entries(metrics.contentTypes).map(([type, percentage]) => {
+                const getLabel = () => {
+                  switch (type) {
+                    case 'posts': return 'Posts';
+                    case 'stories': return 'Stories';
+                    case 'reels': return 'Reels';
+                    case 'liveVideos': return 'Live Videos';
+                    case 'videos': return 'Videos';
+                    default: return type;
+                  }
+                };
+
+                const getBarColor = () => {
+                  switch (type) {
+                    case 'posts': return 'bg-pink-500';
+                    case 'stories': return 'bg-pink-400';
+                    case 'reels': return 'bg-purple-500';
+                    case 'liveVideos': return 'bg-purple-400';
+                    case 'videos': return 'bg-purple-300';
+                    default: return 'bg-pink-500';
+                  }
+                };
+
+                return (
+                  <div key={type} className="flex items-center justify-between">
+                    <span className="text-sm text-gray-300 font-medium">{getLabel()}</span>
+                    <div className="flex items-center gap-3">
+                      <div className="w-40 h-3 bg-background/50 rounded-full overflow-hidden">
+                        <div 
+                          className={`h-full ${getBarColor()} transition-all duration-300 relative`}
+                          style={{ width: `${(percentage / 50) * 100}%` }}
+                        >
+                          {/* Shimmer effect */}
+                          <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/20 to-transparent animate-shimmer"></div>
+                        </div>
+                      </div>
+                      <span className="text-sm font-bold text-pink-400 w-12 text-right">
+                        {percentage}%
+                      </span>
+                    </div>
+                  </div>
+                );
+              })}
+            </div>
+          </div>
         </div>
 
-        {/* Content Performance */}
-        <div className="bg-card/50 rounded-lg p-4 border border-pink-500/20">
-          <h4 className="text-sm font-medium text-gray-400 mb-4 uppercase">By content type</h4>
+        {/* Interactions Section */}
+        <div className="bg-card/50 rounded-lg p-6 border border-pink-500/20">
+          <h4 className="text-lg font-semibold text-white mb-4 text-neon">Interactions</h4>
           
-          <div className="space-y-3">
-            {Object.entries(metrics.contentTypes).map(([type, percentage]) => {
-              const getIcon = () => {
-                switch (type) {
-                  case 'posts': return <Image className="w-4 h-4 text-pink-500" />;
-                  case 'stories': return <BarChart3 className="w-4 h-4 text-pink-400" />;
-                  case 'reels': return <Video className="w-4 h-4 text-purple-500" />;
-                  case 'liveVideos': return <Video className="w-4 h-4 text-purple-400" />;
-                  case 'videos': return <Video className="w-4 h-4 text-purple-300" />;
-                  default: return <BarChart3 className="w-4 h-4 text-pink-500" />;
-                }
-              };
+          {/* Main Interactions Display */}
+          <div className="text-center mb-6">
+            <div className="text-4xl font-bold text-pink-500 text-neon mb-2">
+              153,192
+            </div>
+            <div className="text-lg text-gray-300 mb-1">Interactions</div>
+            <div className="text-sm text-gray-400">{metrics.interactionsFromAds} from ads</div>
+          </div>
 
-              const getLabel = () => {
-                switch (type) {
-                  case 'posts': return 'Posts';
-                  case 'stories': return 'Stories';
-                  case 'reels': return 'Reels';
-                  case 'liveVideos': return 'Live Videos';
-                  case 'videos': return 'Videos';
-                  default: return type;
-                }
-              };
-
-              const getBarColor = () => {
-                switch (type) {
-                  case 'posts': return 'bg-pink-500';
-                  case 'stories': return 'bg-pink-400';
-                  case 'reels': return 'bg-purple-500';
-                  case 'liveVideos': return 'bg-purple-400';
-                  case 'videos': return 'bg-purple-300';
-                  default: return 'bg-pink-500';
-                }
-              };
-
-              return (
-                <div key={type} className="flex items-center justify-between">
-                  <div className="flex items-center gap-2">
-                    {getIcon()}
-                    <span className="text-sm text-gray-300">{getLabel()}</span>
-                  </div>
-                  <div className="flex items-center gap-3">
-                    <div className="w-32 h-2 bg-background/50 rounded-full overflow-hidden">
-                      <div 
-                        className={`h-full ${getBarColor()} transition-all duration-300`}
-                        style={{ width: `${(percentage / 50) * 100}%` }}
-                      />
-                    </div>
-                    <span className="text-sm font-medium text-pink-400 w-12 text-right">
-                      {percentage}%
-                    </span>
-                  </div>
+          {/* Interactions Audience Type Pie Chart */}
+          <div className="flex items-center justify-center gap-6">
+            <div className="w-32 h-32 relative">
+              <Doughnut 
+                data={{
+                  labels: ['Followers', 'Non-followers'],
+                  datasets: [{
+                    data: [60.9, 39.1],
+                    backgroundColor: ['#ec4899', '#8b5cf6'],
+                    borderColor: ['#db2777', '#7c3aed'],
+                    borderWidth: 2,
+                    cutout: '60%',
+                  }]
+                }}
+                options={{
+                  responsive: true,
+                  maintainAspectRatio: false,
+                  plugins: {
+                    legend: {
+                      display: false,
+                    },
+                    tooltip: {
+                      backgroundColor: 'rgba(10, 10, 10, 0.9)',
+                      titleColor: '#fff',
+                      bodyColor: '#fff',
+                      borderColor: 'rgba(236, 72, 153, 0.2)',
+                      borderWidth: 1,
+                      callbacks: {
+                        label: function(context: any) {
+                          return `${context.label}: ${context.parsed}%`;
+                        }
+                      }
+                    },
+                  },
+                }}
+              />
+            </div>
+            
+            {/* Legend */}
+            <div className="space-y-3">
+              <div className="flex items-center justify-between min-w-[140px]">
+                <div className="flex items-center gap-3">
+                  <div className="w-4 h-4 rounded-full bg-pink-500"></div>
+                  <span className="text-sm text-gray-300 font-medium">Followers</span>
                 </div>
-              );
-            })}
+                <span className="text-lg font-bold text-pink-500">60.9%</span>
+              </div>
+              <div className="flex items-center justify-between">
+                <div className="flex items-center gap-3">
+                  <div className="w-4 h-4 rounded-full bg-purple-500"></div>
+                  <span className="text-sm text-gray-300 font-medium">Non-followers</span>
+                </div>
+                <span className="text-lg font-bold text-purple-500">39.1%</span>
+              </div>
+            </div>
           </div>
         </div>
 
@@ -307,15 +392,18 @@ export default function InstagramMetricsCard() {
 
               return (
                 <div key={location} className="flex items-center justify-between">
-                  <span className="text-sm text-gray-300">{getLocationName()}</span>
+                  <span className="text-sm text-gray-300 font-medium">{getLocationName()}</span>
                   <div className="flex items-center gap-3">
-                    <div className="w-32 h-2 bg-background/50 rounded-full overflow-hidden">
+                    <div className="w-40 h-3 bg-background/50 rounded-full overflow-hidden">
                       <div 
-                        className="h-full bg-pink-500 transition-all duration-300"
+                        className="h-full bg-pink-500 transition-all duration-300 relative"
                         style={{ width: `${(percentage / 60) * 100}%` }}
-                      />
+                      >
+                        {/* Shimmer effect */}
+                        <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/20 to-transparent animate-shimmer"></div>
+                      </div>
                     </div>
-                    <span className="text-sm font-medium text-pink-400 w-12 text-right">
+                    <span className="text-sm font-bold text-pink-400 w-12 text-right">
                       {percentage}%
                     </span>
                   </div>
@@ -327,7 +415,7 @@ export default function InstagramMetricsCard() {
 
         {/* Age Range */}
         <div className="bg-card/50 rounded-lg p-4 border border-pink-500/20">
-          <h4 className="text-sm font-medium text-gray-400 mb-4 uppercase">Age range</h4>
+          <h4 className="text-lg font-semibold text-white mb-4 text-neon">Age range</h4>
           
           {/* Filter buttons */}
           <div className="flex gap-2 mb-4">
@@ -345,15 +433,18 @@ export default function InstagramMetricsCard() {
           <div className="space-y-3">
             {Object.entries(metrics.ageGroups).map(([age, percentage]) => (
               <div key={age} className="flex items-center justify-between">
-                <span className="text-sm text-gray-300">{age}</span>
+                <span className="text-sm text-gray-300 font-medium">{age}</span>
                 <div className="flex items-center gap-3">
-                  <div className="w-32 h-2 bg-background/50 rounded-full overflow-hidden">
+                  <div className="w-40 h-3 bg-background/50 rounded-full overflow-hidden">
                     <div 
-                      className="h-full bg-pink-500 transition-all duration-300"
+                      className="h-full bg-pink-500 transition-all duration-300 relative"
                       style={{ width: `${(percentage / 45) * 100}%` }}
-                    />
+                    >
+                      {/* Shimmer effect */}
+                      <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/20 to-transparent animate-shimmer"></div>
+                    </div>
                   </div>
-                  <span className="text-sm font-medium text-pink-400 w-12 text-right">
+                  <span className="text-sm font-bold text-pink-400 w-12 text-right">
                     {percentage}%
                   </span>
                 </div>
