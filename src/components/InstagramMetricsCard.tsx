@@ -404,19 +404,6 @@ export default function InstagramMetricsCard() {
         <div className="bg-card/50 rounded-lg p-4 border border-pink-500/20">
           <h4 className="text-lg font-semibold text-white mb-4 text-neon">Age range</h4>
           
-          {/* Filter buttons */}
-          <div className="flex gap-2 mb-4">
-            <button className="px-4 py-2 bg-pink-500/20 border border-pink-500/30 rounded-full text-pink-400 text-sm font-medium">
-              All
-            </button>
-            <button className="px-4 py-2 bg-background/50 border border-gray-600/30 rounded-full text-gray-400 text-sm hover:border-pink-500/30 transition-colors">
-              Men
-            </button>
-            <button className="px-4 py-2 bg-background/50 border border-gray-600/30 rounded-full text-gray-400 text-sm hover:border-pink-500/30 transition-colors">
-              Women
-            </button>
-          </div>
-          
           <div className="space-y-3">
             {Object.entries(metrics.ageGroups).map(([age, percentage]) => (
               <div key={age} className="flex items-center justify-between">
