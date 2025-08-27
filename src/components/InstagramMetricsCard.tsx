@@ -13,6 +13,8 @@ interface InstagramMetrics {
 export default function InstagramMetricsCard() {
   const [metrics, setMetrics] = useState<InstagramMetrics>({
     followers: 32800,
+  }
+  )
   // Using mock data directly since no backend is available
   const metrics = {
     followers: 45200,
