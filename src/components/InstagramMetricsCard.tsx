@@ -296,18 +296,20 @@ export default function InstagramMetricsCard() {
         <div className="bg-card/50 rounded-lg p-4 border border-pink-500/20">
           <h4 className="text-base font-semibold text-white mb-3 text-neon">Interactions</h4>
           
-          {/* Main Interactions Display */}
-          <div className="text-center mb-4">
-            <div className="text-3xl font-bold text-pink-500 text-neon mb-2">
-              153,192
+          {/* Top Row - Main Interactions and Pie Chart in two columns */}
+          <div className="grid grid-cols-2 gap-4 mb-4">
+            {/* Main Interactions Display */}
+            <div className="text-center">
+              <div className="text-3xl font-bold text-pink-500 text-neon mb-2">
+                153,192
+              </div>
+              <div className="text-base text-gray-300 mb-1">Interactions</div>
+              <div className="text-sm text-gray-400">{metrics.interactionsFromAds} from ads</div>
             </div>
-            <div className="text-base text-gray-300 mb-1">Interactions</div>
-            <div className="text-sm text-gray-400">{metrics.interactionsFromAds} from ads</div>
-          </div>
 
-          {/* Interactions Audience Type Pie Chart */}
-          <div className="flex items-center justify-center gap-4">
-            <div className="w-24 h-24 relative">
+            {/* Interactions Audience Type Pie Chart */}
+            <div className="flex items-center justify-center gap-3">
+              <div className="w-20 h-20 relative">
               <Doughnut 
                 data={{
                   labels: ['Followers', 'Non-followers'],
@@ -384,8 +386,8 @@ export default function InstagramMetricsCard() {
                 <div key={location} className="flex items-center justify-between">
                   <span className="text-sm text-gray-300 font-medium">{getLocationName()}</span>
                   <div className="flex items-center gap-3">
-                    <div className="w-40 h-3 bg-background/50 rounded-full overflow-hidden">
-                      <div 
+                    <div className="w-3 h-3 rounded-full bg-pink-500"></div>
+                    <span className="text-xs text-gray-300 font-medium">Followers</span>
                         className="h-full bg-pink-500 transition-all duration-300 relative"
                         style={{ width: `${(percentage / 60) * 100}%` }}
                       >
@@ -416,14 +418,14 @@ export default function InstagramMetricsCard() {
                     <div 
                       className="h-full bg-pink-500 transition-all duration-300 relative"
                       style={{ width: `${(percentage / 45) * 100}%` }}
-                    >
+                  <span className="text-sm font-bold text-pink-500">60.9%</span>
                       {/* Shimmer effect */}
                       <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/20 to-transparent animate-shimmer"></div>
                     </div>
-                  </div>
-                  <span className="text-sm font-bold text-pink-400 w-12 text-right">
+                    <div className="w-3 h-3 rounded-full bg-purple-500"></div>
+                    <span className="text-xs text-gray-300 font-medium">Non-followers</span>
                     {percentage}%
-                  </span>
+                  <span className="text-sm font-bold text-purple-500">39.1%</span>
                 </div>
               </div>
             ))}
