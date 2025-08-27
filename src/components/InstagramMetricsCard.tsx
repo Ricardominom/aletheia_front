@@ -2,8 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { Instagram, Users, Eye, Heart, MessageCircle } from 'lucide-react';
 
 interface InstagramMetrics {
-  followers: number;
-  reach: number;
+  const [loading, setLoading] = useState(false);
   engagement: number;
   likes: number;
   comments: number;
@@ -14,31 +13,16 @@ interface InstagramMetrics {
 export default function InstagramMetricsCard() {
   const [metrics, setMetrics] = useState<InstagramMetrics>({
     followers: 32800,
-    reach: 89200,
-    engagement: 12.7,
-    likes: 3420,
-    comments: 287,
+  // Using mock data directly since no backend is available
+  const metrics = {
+    followers: 45200,
+    reach: 128500,
+    engagement_rate: 4.8,
+    likes: 8420,
+    comments: 1250,
     stories: 24,
-    impressions: 112400,
-  });
-
-  useEffect(() => {
-    // Simulate API call - replace with actual API endpoint when available
-    const fetchMetrics = async () => {
-      try {
-        const response = await fetch('/api/social/instagram');
-        if (response.ok) {
-          const data = await response.json();
-          setMetrics(data);
-        }
-      } catch (error) {
-        // Use mock data if API fails
-        console.log('Using mock Instagram data');
-      }
-    };
-
-    fetchMetrics();
-  }, []);
+    impressions: 156300
+  };
 
   return (
     <div className="glassmorphic-container p-6 h-[320px] animate-scale-in">
