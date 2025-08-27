@@ -310,56 +310,57 @@ export default function InstagramMetricsCard() {
             {/* Interactions Audience Type Pie Chart */}
             <div className="flex items-center justify-center gap-3">
               <div className="w-20 h-20 relative">
-              <Doughnut 
-                data={{
-                  labels: ['Followers', 'Non-followers'],
-                  datasets: [{
-                    data: [60.9, 39.1],
-                    backgroundColor: ['#ec4899', '#8b5cf6'],
-                    borderColor: ['#db2777', '#7c3aed'],
-                    borderWidth: 2,
-                    cutout: '60%',
-                  }]
-                }}
-                options={{
-                  responsive: true,
-                  maintainAspectRatio: false,
-                  plugins: {
-                    legend: {
-                      display: false,
-                    },
-                    tooltip: {
-                      backgroundColor: 'rgba(10, 10, 10, 0.9)',
-                      titleColor: '#fff',
-                      bodyColor: '#fff',
-                      borderColor: 'rgba(236, 72, 153, 0.2)',
-                      borderWidth: 1,
-                      callbacks: {
-                        label: function(context: any) {
-                          return `${context.label}: ${context.parsed}%`;
+                <Doughnut 
+                  data={{
+                    labels: ['Followers', 'Non-followers'],
+                    datasets: [{
+                      data: [60.9, 39.1],
+                      backgroundColor: ['#ec4899', '#8b5cf6'],
+                      borderColor: ['#db2777', '#7c3aed'],
+                      borderWidth: 2,
+                      cutout: '60%',
+                    }]
+                  }}
+                  options={{
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    plugins: {
+                      legend: {
+                        display: false,
+                      },
+                      tooltip: {
+                        backgroundColor: 'rgba(10, 10, 10, 0.9)',
+                        titleColor: '#fff',
+                        bodyColor: '#fff',
+                        borderColor: 'rgba(236, 72, 153, 0.2)',
+                        borderWidth: 1,
+                        callbacks: {
+                          label: function(context: any) {
+                            return `${context.label}: ${context.parsed}%`;
+                          }
                         }
-                      }
+                      },
                     },
-                  },
-                }}
-              />
-            </div>
-            
-            {/* Legend */}
-            <div className="space-y-2">
-              <div className="flex items-center justify-between min-w-[120px]">
-                <div className="flex items-center gap-3">
-                  <div className="w-4 h-4 rounded-full bg-pink-500"></div>
-                  <span className="text-sm text-gray-300 font-medium">Followers</span>
-                </div>
-                <span className="text-base font-bold text-pink-500">60.9%</span>
+                  }}
+                />
               </div>
-              <div className="flex items-center justify-between">
-                <div className="flex items-center gap-3">
-                  <div className="w-4 h-4 rounded-full bg-purple-500"></div>
-                  <span className="text-sm text-gray-300 font-medium">Non-followers</span>
+              
+              {/* Legend */}
+              <div className="space-y-2">
+                <div className="flex items-center justify-between min-w-[120px]">
+                  <div className="flex items-center gap-3">
+                    <div className="w-4 h-4 rounded-full bg-pink-500"></div>
+                    <span className="text-sm text-gray-300 font-medium">Followers</span>
+                  </div>
+                  <span className="text-base font-bold text-pink-500">60.9%</span>
                 </div>
-                <span className="text-base font-bold text-purple-500">39.1%</span>
+                <div className="flex items-center justify-between">
+                  <div className="flex items-center gap-3">
+                    <div className="w-4 h-4 rounded-full bg-purple-500"></div>
+                    <span className="text-sm text-gray-300 font-medium">Non-followers</span>
+                  </div>
+                  <span className="text-base font-bold text-purple-500">39.1%</span>
+                </div>
               </div>
             </div>
           </div>
@@ -386,8 +387,8 @@ export default function InstagramMetricsCard() {
                 <div key={location} className="flex items-center justify-between">
                   <span className="text-sm text-gray-300 font-medium">{getLocationName()}</span>
                   <div className="flex items-center gap-3">
-                    <div className="w-3 h-3 rounded-full bg-pink-500"></div>
-                    <span className="text-xs text-gray-300 font-medium">Followers</span>
+                    <div className="w-32 h-2 bg-background/50 rounded-full overflow-hidden">
+                      <div 
                         className="h-full bg-pink-500 transition-all duration-300 relative"
                         style={{ width: `${(percentage / 60) * 100}%` }}
                       >
@@ -418,14 +419,14 @@ export default function InstagramMetricsCard() {
                     <div 
                       className="h-full bg-pink-500 transition-all duration-300 relative"
                       style={{ width: `${(percentage / 45) * 100}%` }}
-                  <span className="text-sm font-bold text-pink-500">60.9%</span>
+                    >
                       {/* Shimmer effect */}
                       <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/20 to-transparent animate-shimmer"></div>
                     </div>
-                    <div className="w-3 h-3 rounded-full bg-purple-500"></div>
-                    <span className="text-xs text-gray-300 font-medium">Non-followers</span>
+                  </div>
+                  <span className="text-sm font-bold text-pink-400 w-12 text-right">
                     {percentage}%
-                  <span className="text-sm font-bold text-purple-500">39.1%</span>
+                  </span>
                 </div>
               </div>
             ))}
