@@ -17,6 +17,7 @@ import AdversariosTable from "../components/adversarios/AdversariosTable";
 import FacebookMetricsCard from "../components/FacebookMetricsCard";
 import InstagramMetricsCard from "../components/InstagramMetricsCard";
 import QuantitativeAnalysisCard from "../components/QuantitativeAnalysisCard";
+import ContentAnalyticsCard from "../components/ContentAnalyticsCard";
 
 export default function DashboardPage() {
   const location = useLocation();
