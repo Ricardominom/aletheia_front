@@ -73,24 +73,6 @@ export default function FacebookMetricsCard() {
     },
   });
 
-  useEffect(() => {
-    // Simulate API call - replace with actual API endpoint when available
-    const fetchMetrics = async () => {
-      try {
-        const response = await fetch('/api/social/facebook');
-        if (response.ok) {
-          const data = await response.json();
-          setMetrics(data);
-        }
-      } catch (error) {
-        // Use mock data if API fails
-        console.log('Using mock Facebook data');
-      }
-    };
-
-    fetchMetrics();
-  }, []);
-
   return (
     <div className="glassmorphic-container p-6 animate-scale-in">
       {/* Background effects */}
