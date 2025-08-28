@@ -60,24 +60,6 @@ export default function QuantitativeAnalysisCard() {
     dateRange: 'Corte de febrero a agosto de 2025'
   });
 
-  useEffect(() => {
-    // Simulate API call - replace with actual API endpoint when available
-    const fetchData = async () => {
-      try {
-        const response = await fetch('/api/social/quantitative-analysis');
-        if (response.ok) {
-          const apiData = await response.json();
-          setData(apiData);
-        }
-      } catch (error) {
-        // Use mock data if API fails
-        console.log('Using mock quantitative analysis data');
-      }
-    };
-
-    fetchData();
-  }, []);
-
   const formatCurrency = (amount: number) => {
     return `$${amount.toLocaleString('es-ES')}`;
   };
