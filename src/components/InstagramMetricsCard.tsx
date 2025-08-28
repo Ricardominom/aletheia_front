@@ -116,7 +116,7 @@ export default function InstagramMetricsCard() {
             <div className="bg-card/50 rounded-lg p-3 border border-pink-500/20 group hover:border-pink-500/40 transition-all duration-300">
               <div className="flex items-center gap-2 mb-2">
                 <Eye className="w-4 h-4 text-pink-400" />
-                <span className="text-xs text-gray-400 uppercase">Views</span>
+                <span className="text-xs text-gray-400 uppercase">Vistas</span>
               </div>
               <div className="text-2xl font-bold text-pink-500 text-neon animate-float">
                 6.0M
@@ -126,18 +126,18 @@ export default function InstagramMetricsCard() {
             <div className="bg-card/50 rounded-lg p-3 border border-pink-500/20 group hover:border-pink-500/40 transition-all duration-300">
               <div className="flex items-center gap-2 mb-2">
                 <Heart className="w-4 h-4 text-pink-400" />
-                <span className="text-xs text-gray-400 uppercase">Interactions</span>
+                <span className="text-xs text-gray-400 uppercase">Interacciones</span>
               </div>
               <div className="text-2xl font-bold text-pink-500 text-neon animate-float">
                 {metrics.interactions}
               </div>
-              <div className="text-xs text-gray-400 mt-1">{metrics.interactionsFromAds} from ads</div>
+              <div className="text-xs text-gray-400 mt-1">{metrics.interactionsFromAds} de anuncios</div>
             </div>
 
             <div className="bg-card/50 rounded-lg p-3 border border-pink-500/20 group hover:border-pink-500/40 transition-all duration-300">
               <div className="flex items-center gap-2 mb-2">
                 <Users className="w-4 h-4 text-pink-400" />
-                <span className="text-xs text-gray-400 uppercase">New followers</span>
+                <span className="text-xs text-gray-400 uppercase">Nuevos seguidores</span>
               </div>
               <div className="text-2xl font-bold text-pink-400 text-neon">
                 {metrics.newFollowers.toLocaleString()}
@@ -147,7 +147,7 @@ export default function InstagramMetricsCard() {
             <div className="bg-card/50 rounded-lg p-3 border border-pink-500/20 group hover:border-pink-500/40 transition-all duration-300">
               <div className="flex items-center gap-2 mb-2">
                 <MessageCircle className="w-4 h-4 text-pink-400" />
-                <span className="text-xs text-gray-400 uppercase">Content shared</span>
+                <span className="text-xs text-gray-400 uppercase">Contenido compartido</span>
               </div>
               <div className="text-2xl font-bold text-pink-400 text-neon">
                 {metrics.contentShared}
@@ -157,13 +157,13 @@ export default function InstagramMetricsCard() {
 
           {/* Audience Type Distribution - Moved to the right side */}
           <div className="col-span-6 bg-card/50 rounded-lg p-4 border border-pink-500/20">
-            <h4 className="text-sm font-medium text-gray-400 mb-3 uppercase">Audience Type</h4>
+            <h4 className="text-sm font-medium text-gray-400 mb-3 uppercase">Tipo de Audiencia</h4>
             <div className="flex items-center justify-center gap-4 h-full">
               {/* Pie Chart */}
               <div className="w-24 h-24 relative">
                 <Doughnut 
                   data={{
-                    labels: ['Followers', 'Non-followers'],
+                    labels: ['Seguidores', 'No seguidores'],
                     datasets: [{
                       data: [metrics.audienceType.followers, metrics.audienceType.nonFollowers],
                       backgroundColor: ['#ec4899', '#8b5cf6'],
