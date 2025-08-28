@@ -16,6 +16,7 @@ import AvisosTable from "../components/cochabamba/AvisosTable";
 import AdversariosTable from "../components/adversarios/AdversariosTable";
 import FacebookMetricsCard from "../components/FacebookMetricsCard";
 import InstagramMetricsCard from "../components/InstagramMetricsCard";
+import QuantitativeAnalysisCard from "../components/QuantitativeAnalysisCard";
 
 export default function DashboardPage() {
   const location = useLocation();
@@ -135,6 +136,12 @@ export default function DashboardPage() {
                 <div className="grid grid-cols-12 gap-6">
                   <div className="col-span-12">
                     <InstagramMetricsCard />
+                  </div>
+                </div>
+
+                <div className="grid grid-cols-12 gap-6">
+                  <div className="col-span-12">
+                    <QuantitativeAnalysisCard />
                   </div>
                 </div>
 
