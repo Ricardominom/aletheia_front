@@ -163,7 +163,7 @@ export default function InstagramMetricsCard() {
               <div className="w-24 h-24 relative">
                 <Doughnut 
                   data={{
-                   labels: ['Seguidores', 'No seguidores'],
+                    labels: ['Followers', 'Non-followers'],
                     datasets: [{
                       data: [metrics.audienceType.followers, metrics.audienceType.nonFollowers],
                       backgroundColor: ['#ec4899', '#8b5cf6'],
@@ -187,7 +187,7 @@ export default function InstagramMetricsCard() {
                         borderWidth: 1,
                         callbacks: {
                           label: function(context: any) {
-                           return `${context.label}: ${context.parsed}%`;
+                            return `${context.label}: ${context.parsed}%`;
                           }
                         }
                       },
@@ -201,14 +201,14 @@ export default function InstagramMetricsCard() {
                 <div className="flex items-center justify-between">
                   <div className="flex items-center gap-2">
                     <div className="w-3 h-3 rounded-full bg-pink-500"></div>
-                   <span className="text-sm text-gray-300 font-medium">Seguidores</span>
+                    <span className="text-sm text-gray-300 font-medium">Followers</span>
                   </div>
                   <span className="text-lg font-bold text-pink-500">{metrics.audienceType.followers}%</span>
                 </div>
                 <div className="flex items-center justify-between">
                   <div className="flex items-center gap-2">
                     <div className="w-3 h-3 rounded-full bg-purple-500"></div>
-                   <span className="text-sm text-gray-300 font-medium">No seguidores</span>
+                    <span className="text-sm text-gray-300 font-medium">Non-followers</span>
                   </div>
                   <span className="text-lg font-bold text-purple-500">{metrics.audienceType.nonFollowers}%</span>
                 </div>
@@ -221,7 +221,7 @@ export default function InstagramMetricsCard() {
         <div className="bg-background/30 rounded-lg p-3 border border-pink-500/20 mb-4">
           <div className="flex items-center justify-between">
             <div>
-             <div className="text-sm text-gray-400 mb-1">Cuentas alcanzadas</div>
+              <div className="text-sm text-gray-400 mb-1">Accounts reached</div>
               <div className="text-xl font-bold text-pink-500">{metrics.accountsReached}</div>
             </div>
             <div className="flex items-center gap-2 text-green-400">
@@ -235,16 +235,16 @@ export default function InstagramMetricsCard() {
         <div className="grid grid-cols-3 gap-4">
           {/* By Content Type */}
           <div className="bg-card/50 rounded-lg p-4 border border-pink-500/20">
-           <h4 className="text-xs font-medium text-gray-400 mb-3 uppercase">Por tipo de contenido</h4>
+            <h4 className="text-xs font-medium text-gray-400 mb-3 uppercase">By content type</h4>
             
             <div className="space-y-2">
               {Object.entries(metrics.contentTypes).map(([type, percentage]) => {
                 const getLabel = () => {
                   switch (type) {
-                   case 'posts': return 'Publicaciones';
-                   case 'stories': return 'Historias';
+                    case 'posts': return 'Posts';
+                    case 'stories': return 'Stories';
                     case 'reels': return 'Reels';
-                   case 'liveVideos': return 'Videos en vivo';
+                    case 'liveVideos': return 'Live Videos';
                     case 'videos': return 'Videos';
                     default: return type;
                   }
@@ -286,7 +286,7 @@ export default function InstagramMetricsCard() {
 
           {/* Locations */}
           <div className="bg-card/50 rounded-lg p-4 border border-pink-500/20">
-           <h4 className="text-xs font-medium text-gray-400 mb-3 uppercase">Principales ubicaciones</h4>
+            <h4 className="text-xs font-medium text-gray-400 mb-3 uppercase">Top Locations</h4>
           
             <div className="space-y-2">
               {Object.entries(metrics.locations).map(([location, percentage]) => {
@@ -326,7 +326,7 @@ export default function InstagramMetricsCard() {
 
           {/* Age Range */}
           <div className="bg-card/50 rounded-lg p-4 border border-pink-500/20">
-           <h4 className="text-xs font-medium text-gray-400 mb-3 uppercase">Rango de edad</h4>
+            <h4 className="text-xs font-medium text-gray-400 mb-3 uppercase">Age range</h4>
           
             <div className="space-y-2">
               {Object.entries(metrics.ageGroups).map(([age, percentage]) => (
