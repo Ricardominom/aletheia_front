@@ -232,12 +232,12 @@ export default function InstagramMetricsCard() {
         </div>
 
         {/* Content Performance and Locations in same row */}
-        <div className="grid grid-cols-3 gap-3">
+        <div className="grid grid-cols-3 gap-4">
           {/* By Content Type */}
-          <div className="bg-card/50 rounded-lg p-2 border border-pink-500/20">
-            <h4 className="text-[10px] font-medium text-gray-400 mb-2 uppercase">By content type</h4>
+          <div className="bg-card/50 rounded-lg p-4 border border-pink-500/20">
+            <h4 className="text-xs font-medium text-gray-400 mb-3 uppercase">By content type</h4>
             
-            <div className="space-y-1">
+            <div className="space-y-2">
               {Object.entries(metrics.contentTypes).map(([type, percentage]) => {
                 const getLabel = () => {
                   switch (type) {
@@ -263,9 +263,9 @@ export default function InstagramMetricsCard() {
 
                 return (
                   <div key={type} className="flex items-center justify-between">
-                    <span className="text-[10px] text-gray-300 font-medium">{getLabel()}</span>
+                    <span className="text-xs text-gray-300 font-medium">{getLabel()}</span>
                     <div className="flex items-center gap-2">
-                      <div className="w-12 h-1 bg-background/50 rounded-full overflow-hidden">
+                      <div className="w-16 h-2 bg-background/50 rounded-full overflow-hidden">
                         <div 
                           className={`h-full ${getBarColor()} transition-all duration-300 relative`}
                           style={{ width: `${(percentage / 50) * 100}%` }}
@@ -274,7 +274,7 @@ export default function InstagramMetricsCard() {
                           <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/20 to-transparent animate-shimmer"></div>
                         </div>
                       </div>
-                      <span className="text-[10px] font-bold text-pink-400 w-8 text-right">
+                      <span className="text-xs font-bold text-pink-400 w-10 text-right">
                         {percentage}%
                       </span>
                     </div>
@@ -285,10 +285,10 @@ export default function InstagramMetricsCard() {
           </div>
 
           {/* Locations */}
-          <div className="bg-card/50 rounded-lg p-2 border border-pink-500/20">
-            <h4 className="text-[10px] font-medium text-gray-400 mb-2 uppercase">Top Locations</h4>
+          <div className="bg-card/50 rounded-lg p-4 border border-pink-500/20">
+            <h4 className="text-xs font-medium text-gray-400 mb-3 uppercase">Top Locations</h4>
           
-            <div className="space-y-1">
+            <div className="space-y-2">
               {Object.entries(metrics.locations).map(([location, percentage]) => {
                 const getLocationName = () => {
                   switch (location) {
@@ -303,9 +303,9 @@ export default function InstagramMetricsCard() {
 
                 return (
                   <div key={location} className="flex items-center justify-between">
-                    <span className="text-[10px] text-gray-300 font-medium">{getLocationName()}</span>
+                    <span className="text-xs text-gray-300 font-medium">{getLocationName()}</span>
                     <div className="flex items-center gap-2">
-                      <div className="w-12 h-1 bg-background/50 rounded-full overflow-hidden">
+                      <div className="w-16 h-2 bg-background/50 rounded-full overflow-hidden">
                         <div 
                           className="h-full bg-pink-500 transition-all duration-300 relative"
                           style={{ width: `${(percentage / 60) * 100}%` }}
@@ -314,7 +314,7 @@ export default function InstagramMetricsCard() {
                           <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/20 to-transparent animate-shimmer"></div>
                         </div>
                       </div>
-                      <span className="text-[10px] font-bold text-pink-400 w-8 text-right">
+                      <span className="text-xs font-bold text-pink-400 w-10 text-right">
                         {percentage}%
                       </span>
                     </div>
@@ -325,15 +325,15 @@ export default function InstagramMetricsCard() {
           </div>
 
           {/* Age Range */}
-          <div className="bg-card/50 rounded-lg p-2 border border-pink-500/20">
-            <h4 className="text-[10px] font-medium text-gray-400 mb-2 uppercase">Age range</h4>
+          <div className="bg-card/50 rounded-lg p-4 border border-pink-500/20">
+            <h4 className="text-xs font-medium text-gray-400 mb-3 uppercase">Age range</h4>
           
-            <div className="space-y-1">
+            <div className="space-y-2">
               {Object.entries(metrics.ageGroups).map(([age, percentage]) => (
                 <div key={age} className="flex items-center justify-between">
-                  <span className="text-[10px] text-gray-300 font-medium">{age}</span>
+                  <span className="text-xs text-gray-300 font-medium">{age}</span>
                   <div className="flex items-center gap-2">
-                    <div className="w-12 h-1 bg-background/50 rounded-full overflow-hidden">
+                    <div className="w-16 h-2 bg-background/50 rounded-full overflow-hidden">
                       <div 
                         className="h-full bg-pink-500 transition-all duration-300 relative"
                         style={{ width: `${(percentage / 45) * 100}%` }}
@@ -342,7 +342,7 @@ export default function InstagramMetricsCard() {
                         <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/20 to-transparent animate-shimmer"></div>
                       </div>
                     </div>
-                    <span className="text-[10px] font-bold text-pink-400 w-8 text-right">
+                    <span className="text-xs font-bold text-pink-400 w-10 text-right">
                       {percentage}%
                     </span>
                   </div>
