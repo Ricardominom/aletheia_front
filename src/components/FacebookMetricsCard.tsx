@@ -208,14 +208,14 @@ export default function FacebookMetricsCard() {
                 <div className="flex items-center justify-between">
                   <div className="flex items-center gap-2">
                     <div className="w-3 h-3 rounded-full bg-blue-600"></div>
-                    <span className="text-sm text-gray-300 font-medium">Male</span>
+                    <span className="text-sm text-gray-300 font-medium">Hombres</span>
                   </div>
                   <span className="text-lg font-bold text-blue-500">{metrics.genderDistribution.male}%</span>
                 </div>
                 <div className="flex items-center justify-between">
                   <div className="flex items-center gap-2">
                     <div className="w-3 h-3 rounded-full bg-blue-400"></div>
-                    <span className="text-sm text-gray-300 font-medium">Female</span>
+                    <span className="text-sm text-gray-300 font-medium">Mujeres</span>
                   </div>
                   <span className="text-lg font-bold text-blue-400">{metrics.genderDistribution.female}%</span>
                 </div>
@@ -229,17 +229,17 @@ export default function FacebookMetricsCard() {
         <div className="grid grid-cols-2 gap-4">
           {/* Content Performance */}
           <div className="bg-card/50 rounded-lg p-3 border border-blue-500/20">
-            <h4 className="text-xs font-medium text-gray-400 mb-2 uppercase">Content Performance</h4>
+            <h4 className="text-xs font-medium text-gray-400 mb-2 uppercase">Rendimiento de Contenido</h4>
             
             {/* Followers/Non-followers header */}
             <div className="flex items-center gap-3 mb-3 pb-2 border-b border-blue-500/10">
               <div className="flex items-center gap-1">
                 <div className="w-2 h-2 rounded-full bg-green-500"></div>
-                <span className="text-xs font-medium text-green-500">10% Followers</span>
+                <span className="text-xs font-medium text-green-500">10% Seguidores</span>
               </div>
               <div className="flex items-center gap-1">
                 <div className="w-2 h-2 rounded-full bg-blue-600"></div>
-                <span className="text-xs font-medium text-blue-600">90% Non-followers</span>
+                <span className="text-xs font-medium text-blue-600">90% No seguidores</span>
               </div>
             </div>
             
@@ -258,9 +258,9 @@ export default function FacebookMetricsCard() {
                 const getLabel = () => {
                   switch (type) {
                     case 'video': return 'Video';
-                    case 'multiPhoto': return 'Multi Photo';
-                    case 'photo': return 'Photo';
-                    case 'story': return 'Story';
+                    case 'multiPhoto': return 'Multi Foto';
+                    case 'photo': return 'Foto';
+                    case 'story': return 'Historia';
                     default: return type;
                   }
                 };
@@ -291,12 +291,12 @@ export default function FacebookMetricsCard() {
           {/* Age and Gender Distribution */}
           <div className="bg-card/50 rounded-lg p-3 border border-blue-500/20">
             <h4 className="text-xs font-medium text-gray-400 mb-2 uppercase">
-              Age and Gender Distribution
+              Distribución por Edad y Género
             </h4>
             <div className="mb-2 text-center">
-              <span className="text-xs text-blue-400">{metrics.overallGender.women}% Women</span>
+              <span className="text-xs text-blue-400">{metrics.overallGender.women}% Mujeres</span>
               <span className="text-gray-400 mx-1">•</span>
-              <span className="text-xs text-blue-600">{metrics.overallGender.men}% Men</span>
+              <span className="text-xs text-blue-600">{metrics.overallGender.men}% Hombres</span>
             </div>
             <div className="space-y-1.5">
               {Object.entries(metrics.ageGroups).map(([age, percentage]) => (
