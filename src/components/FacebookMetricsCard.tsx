@@ -124,7 +124,7 @@ export default function FacebookMetricsCard() {
             <div className="bg-card/50 rounded-lg p-3 border border-blue-500/20 group hover:border-blue-500/40 transition-all duration-300">
               <div className="flex items-center gap-2 mb-2">
                 <Eye className="w-4 h-4 text-blue-400" />
-                <span className="text-xs text-gray-400 uppercase">Post Views</span>
+                <span className="text-xs text-gray-400 uppercase">Vistas de Publicaciones</span>
               </div>
               <div className="text-2xl font-bold text-blue-500 text-neon animate-float">
                 {metrics.postViews}
@@ -134,7 +134,7 @@ export default function FacebookMetricsCard() {
             <div className="bg-card/50 rounded-lg p-3 border border-blue-500/20 group hover:border-blue-500/40 transition-all duration-300">
               <div className="flex items-center gap-2 mb-2">
                 <Users className="w-4 h-4 text-blue-400" />
-                <span className="text-xs text-gray-400 uppercase">Profile Views</span>
+                <span className="text-xs text-gray-400 uppercase">Vistas de Perfil</span>
               </div>
               <div className="text-2xl font-bold text-blue-500 text-neon animate-float">
                 {metrics.profileViews}
@@ -144,7 +144,7 @@ export default function FacebookMetricsCard() {
             <div className="bg-card/50 rounded-lg p-3 border border-blue-500/20 group hover:border-blue-500/40 transition-all duration-300">
               <div className="flex items-center gap-2 mb-2">
                 <Heart className="w-4 h-4 text-blue-400" />
-                <span className="text-xs text-gray-400 uppercase">Likes</span>
+                <span className="text-xs text-gray-400 uppercase">Me Gusta</span>
               </div>
               <div className="text-2xl font-bold text-blue-400 text-neon">
                 {metrics.likes}
@@ -154,7 +154,7 @@ export default function FacebookMetricsCard() {
             <div className="bg-card/50 rounded-lg p-3 border border-blue-500/20 group hover:border-blue-500/40 transition-all duration-300">
               <div className="flex items-center gap-2 mb-2">
                 <MessageCircle className="w-4 h-4 text-blue-400" />
-                <span className="text-xs text-gray-400 uppercase">Comments</span>
+                <span className="text-xs text-gray-400 uppercase">Comentarios</span>
               </div>
               <div className="text-2xl font-bold text-blue-400 text-neon">
                 {metrics.comments}
