@@ -164,7 +164,7 @@ export default function FacebookMetricsCard() {
 
           {/* Gender Distribution - Moved to the right side */}
           <div className="col-span-6 bg-card/50 rounded-lg p-4 border border-blue-500/20">
-            <h4 className="text-sm font-medium text-gray-400 mb-3 uppercase">Gender Distribution</h4>
+            <h4 className="text-sm font-medium text-gray-400 mb-3 uppercase">Distribución de género</h4>
             <div className="flex items-center justify-center gap-4 h-full min-h-[120px]">
               {/* Pie Chart */}
               <div className="w-24 h-24 relative">
